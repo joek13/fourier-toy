@@ -32,6 +32,11 @@ javascript-natural-sort@0.7.1:
   resolved "https://registry.yarnpkg.com/javascript-natural-sort/-/javascript-natural-sort-0.7.1.tgz#f9e2303d4507f6d74355a73664d1440fb5a0ef59"
   integrity sha1-+eIwPUUH9tdDVac2ZNFED7Wg71k=
 
+jsfft@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/jsfft/-/jsfft-0.0.4.tgz#779f1d4e87b7da3aad51027b8081d34235660e7f"
+  integrity sha512-INIqKIPQSwN63QcUNzj8Tkf/Vlzf+GohQXUxt41xNxnQFczPB3gCzfZEg9jzBodRpaaIUpdea2Eu5D3CpsF3FQ==
+
 mathjs@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-6.0.2.tgz#b6996898f3f0401bd4da4593164cc82e8ac3b014"
