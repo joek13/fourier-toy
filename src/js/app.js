@@ -198,6 +198,17 @@ function pointToPixel(point) {
 }
 
 var points = [];
+var index = 0;
+var maxPoints = 5000;
+
+function addPoint(point) {
+  if(points.length < maxPoints) {
+    points.push(point);
+  } else {
+    points[index % points.length] = point;
+    index += 1;
+  }
+}
 
 function drawArrows(context, time) {
   var pos = math.complex(0, 0);
@@ -217,20 +228,31 @@ function drawArrows(context, time) {
     pos = end;
   }
   // last arrow; add the point to the overall path
-  if(vectors.length > 0) points.push(pos);
+  if(vectors.length > 0) addPoint(pos);
 }
 
 function drawPath(context) {
   context.strokeStyle = "#ff0000";
   context.beginPath();
   if(points.length > 0) {
-    var firstPoint = pointToPixel(points[0]);
-    context.moveTo(firstPoint.re, firstPoint.im);
-    for(var i = 1; i < points.length; i++) {
-      point = points[i];
-      var pixelPoint = pointToPixel(point);
-      context.lineTo(pixelPoint.re, pixelPoint.im);
+    if(points.length < maxPoints) {
+      var firstPoint = pointToPixel(points[0]);
+      context.moveTo(firstPoint.re, firstPoint.im);
+      for(var i = 1; i < points.length; i++) {
+        var point = points[i];
+        var pixelPoint = pointToPixel(point);
+        context.lineTo(pixelPoint.re, pixelPoint.im);
+      }
+    } else {
+      var firstPoint = pointToPixel(points[(index + 1) % points.length]);
+      context.moveTo(firstPoint.re, firstPoint.im);
+      for(var i = index; i < index + points.length; i++) {
+        var point = points[i % points.length];
+        var pixelPoint = pointToPixel(point);
+        context.lineTo(pixelPoint.re, pixelPoint.im);
+      }
     }
+
     context.stroke();
   }
 }
