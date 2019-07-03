@@ -114,10 +114,12 @@ function updateParametricClicked() {
       var scope = {t: t};
       return math.complex(xExpr.evaluate(scope), yExpr.evaluate(scope));
     };
+    hideError();
     vectors = generateVectors(parametric, 0, 2 * math.pi);
   }catch(e) {
     // do nothing (for now)
-    console.log("Error parsing expr: "+e);
+    showError("Error processing expression", e.message);
+    console.error("Error parsing expr: "+e);
   }
 }
 var presetSelect;
@@ -129,6 +131,16 @@ function updatePreset() {
     yInput.value = preset.y;
     updateParametricClicked();
   }
+}
+
+function showError(title, text) {
+  document.getElementById("parseErrorNotification").style.display = "block";
+  document.getElementById("errorTitleText").innerHTML = title;
+  document.getElementById("errorInfoText").innerHTML = text;
+}
+
+function hideError() {
+  document.getElementById("parseErrorNotification").style.display = "none";
 }
 
 function loaded() {
