@@ -3,5 +3,11 @@
     "bulma": "^0.7.5",
     "jsfft": "^0.0.4",
     "mathjs": "^6.0.2"
+  },
+  "devDependencies": {
+    "browserify": "^16.2.3",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.0.2"
   }
 }
